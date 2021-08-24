@@ -1,20 +1,33 @@
 package main
 
 import (
-	"log"
+	"context"
 
-	"github.com/valyala/fasthttp"
+	"github.com/libmonsoon-dev/LonginusNightmare/logger/logrus"
 
 	"github.com/libmonsoon-dev/LonginusNightmare/server"
+	"github.com/libmonsoon-dev/LonginusNightmare/server/httpcontroller"
+	"github.com/libmonsoon-dev/LonginusNightmare/server/wscontroller"
 	"github.com/libmonsoon-dev/LonginusNightmare/static"
+	"github.com/libmonsoon-dev/LonginusNightmare/websocket"
 )
 
 func main() {
-	addr := "0.0.0.0:1337"
+	serverConfig := &server.Config{
+		Addr: "0.0.0.0:1337",
+	}
 
-	handler := server.NewStaticHandler(static.FS)
-	log.Println("starting server on", addr)
-	if err := fasthttp.ListenAndServe(addr, handler); err != nil {
-		log.Fatal(err)
+	var app App
+	logFactory := logrus.NewFactory()
+	app.Hub = wscontroller.NewHub()
+	wsCtl := wscontroller.New(app.Hub, logFactory)
+	upgrader := websocket.NewUpgrader()
+	httpCtl := httpcontroller.New(logFactory, static.Index, static.Static, upgrader, wsCtl)
+	app.Server = server.NewServer(httpCtl, serverConfig)
+
+	ctx := context.TODO()
+	err := app.Run(ctx)
+	if err != nil {
+		logFactory.New("main").Error(err)
 	}
 }

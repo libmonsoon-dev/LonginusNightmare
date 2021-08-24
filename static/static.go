@@ -4,5 +4,8 @@ import (
 	"embed"
 )
 
-//go:embed index.html main.html wasm_exec.js client.wasm
-var FS embed.FS
+//go:embed main.html wasm_exec.js client.wasm
+var Static embed.FS
+
+//go:embed index.html
+var Index []byte

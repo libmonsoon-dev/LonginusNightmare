@@ -3,3 +3,5 @@ bin
 
 static/wasm_exec.js
 static/client.wasm
+
+cmd/playground
