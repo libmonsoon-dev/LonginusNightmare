@@ -1,8 +1,9 @@
 GO=go
+TAGS=
 
 .PHONY: server
 server: bin static
-	$(GO) build -v -o bin/server ./cmd/server
+	$(GO) build -v -tags=$(TAGS) -o bin/server ./cmd/server
 
 bin:
 	mkdir bin
@@ -15,7 +16,7 @@ static/wasm_exec.js:
 
 .PHONY: client
 client:
-	GOOS=js GOARCH=wasm $(GO) build -v -o static/client.wasm ./cmd/client
+	GOOS=js GOARCH=wasm $(GO) build -v -tags=$(TAGS) -o static/client.wasm ./cmd/client
 
 .PHONY: dependency
 dependency:
