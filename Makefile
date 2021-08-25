@@ -20,3 +20,6 @@ client:
 .PHONY: dependency
 dependency:
 	$(GO) mod tidy && $(GO) mod vendor
+
+run-server: server
+	./bin/server
