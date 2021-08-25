@@ -1,18 +1,24 @@
 package main
 
 import (
-	"log"
+	"context"
 
 	"github.com/libmonsoon-dev/LonginusNightmare/client"
+	"github.com/libmonsoon-dev/LonginusNightmare/logger/logrus"
 )
 
 func main() {
+	log := logrus.NewFactory().New("main")
+
 	c, err := client.New()
 	if err != nil {
-		log.Fatal("inti client:", err)
+		log.Errorf("inti client: %v", err)
+		return
 	}
 
-	if err = c.Run(); err != nil {
-		log.Fatal("runtime error:", err)
+	ctx := context.Background()
+	if err = c.Run(ctx); err != nil {
+		log.Errorf("runtime error: %v", err)
+		return
 	}
 }

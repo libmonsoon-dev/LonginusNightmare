@@ -1,11 +1,10 @@
 package client
 
 import (
+	"context"
 	"fmt"
 
-	"github.com/hajimehoshi/ebiten"
-
-	"github.com/libmonsoon-dev/LonginusNightmare/app"
+	"github.com/libmonsoon-dev/LonginusNightmare/run"
 )
 
 type Client struct {
@@ -24,8 +23,6 @@ func New() (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) Run() error {
-	ebiten.SetWindowTitle(app.Name)
-	ebiten.SetWindowSize(screenWidth, screenHeight)
-	return ebiten.RunGame(c.game)
+func (c *Client) Run(ctx context.Context) error {
+	return run.Errorf("game", c.game).Run(ctx)
 }
