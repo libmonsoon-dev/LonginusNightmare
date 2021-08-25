@@ -110,6 +110,11 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
+	currentWidth, currentHeight := g.background.Size()
+	if outsideWidth != currentWidth || outsideHeight != currentHeight {
+		g.initBackground(outsideWidth, outsideHeight)
+	}
+
 	// TODO: remove all fmt.Print* calls and migrate to logger
 	fmt.Printf("outsideWidth = %d, outsideHeight = %d\n", outsideWidth, outsideHeight)
 	return screenWidth, screenHeight
