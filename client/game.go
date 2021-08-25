@@ -27,11 +27,6 @@ func NewGame() (*Game, error) {
 		return nil, fmt.Errorf("init font: %w", err)
 	}
 
-	background, err := ebiten.NewImage(screenWidth, screenHeight, ebiten.FilterDefault)
-	if err != nil {
-		return nil, fmt.Errorf("init background image: %w", err)
-	}
-
 	stdImg, _, err := image.Decode(bytes.NewReader(images.Gopher))
 	if err != nil {
 		return nil, fmt.Errorf("decode gopher image: %w", err)
@@ -43,18 +38,20 @@ func NewGame() (*Game, error) {
 	}
 
 	g := &Game{
-		gopher:     gopherImg,
-		font:       arcadeN,
-		background: background,
-		showFPS:    app.Dev,
-		player:     NewPlayer(),
-		inputCtl:   NewInputController(),
+		ctx:      context.Background(),
+		gopher:   gopherImg,
+		font:     arcadeN,
+		showFPS:  app.Dev,
+		player:   NewPlayer(),
+		inputCtl: NewInputController(),
 	}
 
+	g.initBackground(screenWidth, screenHeight)
 	return g, nil
 }
 
 type Game struct {
+	ctx        context.Context
 	gopher     *ebiten.Image
 	font       *fonts.Arcade
 	background *ebiten.Image
@@ -66,27 +63,25 @@ type Game struct {
 func (g *Game) Run(ctx context.Context) error {
 	ebiten.SetWindowTitle(app.Name)
 	ebiten.SetWindowSize(screenWidth, screenHeight)
-	runGameChan := make(chan error, 1)
+	g.setContext(ctx)
 
-	go func() {
-		err := ebiten.RunGame(g)
-		if err != nil {
-			runGameChan <- err
-		}
-	}()
-
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case err := <-runGameChan:
+	err := ebiten.RunGame(g)
+	if err != nil {
 		return fmt.Errorf("run ebiten game: %w", err)
 	}
+
+	return nil
 }
 
-func (g *Game) Update(_ *ebiten.Image) error {
+func (g *Game) Update(_ *ebiten.Image) (err error) {
+	err = g.ctx.Err()
+	if err != nil {
+		return err
+	}
+
 	g.inputCtl.Update()
 	g.player.Update(g.inputCtl.State())
-	return nil
+	return
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
@@ -125,9 +120,23 @@ func (g *Game) drawPlayer() {
 	op.GeoM.Scale(0.1, 0.1)
 	op.GeoM.Translate(float64(g.player.Position.X), float64(g.player.Position.Y))
 
-	fmt.Printf("gopher X = %d, Y = %d\n", g.player.Position.X, g.player.Position.Y)
+	//fmt.Printf("gopher X = %d, Y = %d\n", g.player.Position.X, g.player.Position.Y)
 	err := g.background.DrawImage(g.gopher, op)
 	if err != nil {
 		fmt.Println("draw player", err)
 	}
+}
+
+func (g *Game) initBackground(width int, height int) {
+	background, err := ebiten.NewImage(width, height, ebiten.FilterDefault)
+	if err != nil {
+		fmt.Println(fmt.Errorf("init background image: %w", err))
+		return
+	}
+
+	g.background = background
+}
+
+func (g *Game) setContext(ctx context.Context) {
+	g.ctx = ctx
 }
