@@ -7,6 +7,9 @@ github.com/fasthttp/router/radix
 # github.com/fasthttp/websocket v1.4.3
 ## explicit
 github.com/fasthttp/websocket
+# github.com/fsnotify/fsnotify v1.4.9
+## explicit
+github.com/fsnotify/fsnotify
 # github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200707082815-5321531c36a2
 github.com/go-gl/glfw/v3.3/glfw
 github.com/go-gl/glfw/v3.3/glfw/glfw/deps
@@ -24,7 +27,6 @@ github.com/golang/freetype/truetype
 github.com/hajimehoshi/ebiten
 github.com/hajimehoshi/ebiten/ebitenutil
 github.com/hajimehoshi/ebiten/ebitenutil/internal/assets
-github.com/hajimehoshi/ebiten/examples/resources/fonts
 github.com/hajimehoshi/ebiten/internal/affine
 github.com/hajimehoshi/ebiten/internal/buffered
 github.com/hajimehoshi/ebiten/internal/clock
