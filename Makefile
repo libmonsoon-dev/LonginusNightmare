@@ -24,3 +24,10 @@ dependency:
 
 run-server: server
 	./bin/server
+
+clean: clean-static
+	rm -rf ./bin
+
+clean-static:
+	rm ./static/client.wasm
+	rm ./static/wasm_exec.js
