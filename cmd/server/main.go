@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
+	"os/signal"
+	"syscall"
 
 	"github.com/libmonsoon-dev/LonginusNightmare/logger/logrus"
-
 	"github.com/libmonsoon-dev/LonginusNightmare/server"
 	"github.com/libmonsoon-dev/LonginusNightmare/server/httpcontroller"
 	"github.com/libmonsoon-dev/LonginusNightmare/server/wscontroller"
@@ -25,7 +26,9 @@ func main() {
 	httpCtl := httpcontroller.New(logFactory, static.Index, static.Static, upgrader, wsCtl)
 	app.Server = server.NewServer(httpCtl, serverConfig)
 
-	ctx := context.TODO()
+	ctx, stopNotify := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stopNotify()
+
 	err := app.Run(ctx)
 	if err != nil {
 		logFactory.New("main").Error(err)
