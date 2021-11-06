@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"os/signal"
 	"syscall"
 
@@ -14,8 +15,12 @@ import (
 )
 
 func main() {
+	addr := flag.String("addr", "0.0.0.0:1337", "Address to serve")
+
+	flag.Parse()
+
 	serverConfig := &server.Config{
-		Addr: "0.0.0.0:1337",
+		Addr: *addr,
 	}
 
 	var app App
