@@ -10,7 +10,7 @@ github.com/fasthttp/websocket
 # github.com/fsnotify/fsnotify v1.4.9
 ## explicit
 github.com/fsnotify/fsnotify
-# github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200707082815-5321531c36a2
+# github.com/go-gl/glfw/v3.3/glfw v0.0.0-20210727001814-0db043d8d5be
 github.com/go-gl/glfw/v3.3/glfw
 github.com/go-gl/glfw/v3.3/glfw/glfw/deps
 github.com/go-gl/glfw/v3.3/glfw/glfw/deps/glad
@@ -22,43 +22,49 @@ github.com/go-gl/glfw/v3.3/glfw/glfw/src
 ## explicit
 github.com/golang/freetype/raster
 github.com/golang/freetype/truetype
-# github.com/hajimehoshi/ebiten v1.12.12
+# github.com/hajimehoshi/ebiten/v2 v2.2.2
 ## explicit
-github.com/hajimehoshi/ebiten
-github.com/hajimehoshi/ebiten/ebitenutil
-github.com/hajimehoshi/ebiten/ebitenutil/internal/assets
-github.com/hajimehoshi/ebiten/internal/affine
-github.com/hajimehoshi/ebiten/internal/buffered
-github.com/hajimehoshi/ebiten/internal/clock
-github.com/hajimehoshi/ebiten/internal/colormcache
-github.com/hajimehoshi/ebiten/internal/devicescale
-github.com/hajimehoshi/ebiten/internal/driver
-github.com/hajimehoshi/ebiten/internal/glfw
-github.com/hajimehoshi/ebiten/internal/graphics
-github.com/hajimehoshi/ebiten/internal/graphicscommand
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/metal
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/metal/ca
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/metal/mtl
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/metal/ns
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/opengl
-github.com/hajimehoshi/ebiten/internal/graphicsdriver/opengl/gl
-github.com/hajimehoshi/ebiten/internal/hooks
-github.com/hajimehoshi/ebiten/internal/jsutil
-github.com/hajimehoshi/ebiten/internal/mipmap
-github.com/hajimehoshi/ebiten/internal/packing
-github.com/hajimehoshi/ebiten/internal/png
-github.com/hajimehoshi/ebiten/internal/restorable
-github.com/hajimehoshi/ebiten/internal/shader
-github.com/hajimehoshi/ebiten/internal/shaderir
-github.com/hajimehoshi/ebiten/internal/shaderir/glsl
-github.com/hajimehoshi/ebiten/internal/shaderir/metal
-github.com/hajimehoshi/ebiten/internal/shareable
-github.com/hajimehoshi/ebiten/internal/thread
-github.com/hajimehoshi/ebiten/internal/uidriver/glfw
-github.com/hajimehoshi/ebiten/internal/uidriver/js
-github.com/hajimehoshi/ebiten/internal/uidriver/mobile
-github.com/hajimehoshi/ebiten/internal/web
-github.com/hajimehoshi/ebiten/text
+github.com/hajimehoshi/ebiten/v2
+github.com/hajimehoshi/ebiten/v2/ebitenutil
+github.com/hajimehoshi/ebiten/v2/ebitenutil/internal/assets
+github.com/hajimehoshi/ebiten/v2/internal/affine
+github.com/hajimehoshi/ebiten/v2/internal/atlas
+github.com/hajimehoshi/ebiten/v2/internal/buffered
+github.com/hajimehoshi/ebiten/v2/internal/clock
+github.com/hajimehoshi/ebiten/v2/internal/debug
+github.com/hajimehoshi/ebiten/v2/internal/devicescale
+github.com/hajimehoshi/ebiten/v2/internal/driver
+github.com/hajimehoshi/ebiten/v2/internal/gamepaddb
+github.com/hajimehoshi/ebiten/v2/internal/glfw
+github.com/hajimehoshi/ebiten/v2/internal/graphics
+github.com/hajimehoshi/ebiten/v2/internal/graphicscommand
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/ca
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/ns
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/opengl
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/opengl/gl
+github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/opengl/gles
+github.com/hajimehoshi/ebiten/v2/internal/hooks
+github.com/hajimehoshi/ebiten/v2/internal/jsutil
+github.com/hajimehoshi/ebiten/v2/internal/mipmap
+github.com/hajimehoshi/ebiten/v2/internal/packing
+github.com/hajimehoshi/ebiten/v2/internal/png
+github.com/hajimehoshi/ebiten/v2/internal/restorable
+github.com/hajimehoshi/ebiten/v2/internal/shader
+github.com/hajimehoshi/ebiten/v2/internal/shaderir
+github.com/hajimehoshi/ebiten/v2/internal/shaderir/glsl
+github.com/hajimehoshi/ebiten/v2/internal/shaderir/metal
+github.com/hajimehoshi/ebiten/v2/internal/thread
+github.com/hajimehoshi/ebiten/v2/internal/uidriver/glfw
+github.com/hajimehoshi/ebiten/v2/internal/uidriver/js
+github.com/hajimehoshi/ebiten/v2/internal/uidriver/mobile
+github.com/hajimehoshi/ebiten/v2/text
+# github.com/jezek/xgb v0.0.0-20210312150743-0e0f116e1240
+github.com/jezek/xgb
+github.com/jezek/xgb/randr
+github.com/jezek/xgb/render
+github.com/jezek/xgb/xproto
 # github.com/klauspost/compress v1.12.2
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/gzip
@@ -91,12 +97,12 @@ golang.org/x/exp/shiny/driver/internal/lifecycler
 golang.org/x/exp/shiny/driver/internal/win32
 golang.org/x/exp/shiny/driver/internal/x11key
 golang.org/x/exp/shiny/screen
-# golang.org/x/image v0.0.0-20200801110659-972c09e46d76
+# golang.org/x/image v0.0.0-20210628002857-a66eb6448b8d
 ## explicit
 golang.org/x/image/font
 golang.org/x/image/math/f64
 golang.org/x/image/math/fixed
-# golang.org/x/mobile v0.0.0-20210208171126-f462b3930c8f
+# golang.org/x/mobile v0.0.0-20210902104108-5d9a33257ab5
 golang.org/x/mobile/app
 golang.org/x/mobile/app/internal/callfn
 golang.org/x/mobile/event/key
@@ -111,8 +117,7 @@ golang.org/x/mobile/internal/mobileinit
 # golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 ## explicit
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1
-## explicit
+# golang.org/x/sys v0.0.0-20210917161153-d61c044b1678
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
